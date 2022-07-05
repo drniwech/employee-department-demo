@@ -1,50 +1,40 @@
 package com.inoptra.employeedepartmentdemo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
 /**
  * @Author: Shrikrishna Prabhumirashi
  * @Description:
  * Represents Employee entity
  **/
+@Entity
+@Getter
+@Setter
+//TODO: Using @Builder but need to do some workaround to make JPA happy.
 public class Employee {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 
 	private String name;
 
-	private Salary salary;
+	protected Employee(){};
 
-	private Department department;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
+	public Employee(String name){
 		this.name = name;
 	}
 
-	public Salary getSalary() {
-		return salary;
-	}
+	@OneToOne(mappedBy = "employee", fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL)
+	private Salary salary;
 
-	public void setSalary(Salary salary) {
-		this.salary = salary;
-	}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
+	private Department department;
 
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-    
 }
