@@ -32,12 +32,11 @@ public class Salary {
 		this.baseSalary = baseSalary;
 	}
 
-	@OneToMany(mappedBy = "salary", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
-			cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "salary", orphanRemoval = true)
 	@JsonManagedReference
 	private List<SalaryComponent> salaryComponents = new ArrayList<>();
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "salary", cascade = CascadeType.MERGE)
 	@JsonBackReference
 	private Employee employee;
 

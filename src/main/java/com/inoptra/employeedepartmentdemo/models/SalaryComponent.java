@@ -32,7 +32,7 @@ public class SalaryComponent {
 		this.factor = factor;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JsonBackReference
 	private Salary salary;
 }

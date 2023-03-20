@@ -31,8 +31,7 @@ public class Department {
 		this.name = name;
 	}
 
-	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER, //TODO: fix JSON failed to lazily init a collection.
-	cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<Employee> employees = new ArrayList<>();
 

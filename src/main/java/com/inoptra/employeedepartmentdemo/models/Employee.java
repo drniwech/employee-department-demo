@@ -29,11 +29,11 @@ public class Employee {
 		this.name = name;
 	}
 
-	@OneToOne(mappedBy = "employee", fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
+	@JoinColumn(name = "salary_id", referencedColumnName = "id")
 	private Salary salary;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JsonBackReference
 	private Department department;
 
