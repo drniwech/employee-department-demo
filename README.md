@@ -61,5 +61,7 @@ _mvn clean test_
 
 ----
 
-## URLs
+## URLs & Notes
 1. http://localhost:8080/h2-console
+2. DB script is available at /test/postman/data.sql
+3. Postman collection to test endpoints is available at /test/postman/DepartmentDemoCollection.postman_collection.json
