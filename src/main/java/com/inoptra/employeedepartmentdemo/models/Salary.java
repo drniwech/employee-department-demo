@@ -36,7 +36,7 @@ public class Salary {
 	@JsonManagedReference
 	private List<SalaryComponent> salaryComponents = new ArrayList<>();
 
-	@OneToOne(mappedBy = "salary", cascade = CascadeType.MERGE)
+	@OneToOne(mappedBy = "salary", cascade = CascadeType.ALL)
 	@JsonBackReference
 	private Employee employee;
 

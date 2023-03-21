@@ -6,22 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/departments")
 public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
 
-    @GetMapping("/departments/{departmentId}")
+    @GetMapping("/{departmentId}")
     public Department getDepartmentById(@PathVariable Long departmentId){
         return departmentService.getDepartmentById(departmentId);
     }
 
-    @PostMapping("/departments/add")
+    @PostMapping()
     public Department addDepartment(@RequestBody Department department){
         return departmentService.addDepartment(department);
     }
 
-    @PutMapping("/departments/update")
+    @PutMapping()
     public Department updateDepartment(@RequestBody Department department){
         return departmentService.updateDepartment(department);
     }

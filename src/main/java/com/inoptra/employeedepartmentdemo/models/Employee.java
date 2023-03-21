@@ -29,7 +29,7 @@ public class Employee {
 		this.name = name;
 	}
 
-	@OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "salary_id", referencedColumnName = "id")
 	private Salary salary;
 

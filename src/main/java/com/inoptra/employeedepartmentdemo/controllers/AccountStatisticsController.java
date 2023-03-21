@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 **/
 
 @RestController
+@RequestMapping("/account/accountstats")
 public class AccountStatisticsController {
 
 	@Autowired
@@ -28,22 +29,22 @@ public class AccountStatisticsController {
 	@Autowired
 	private EmployeeService employeeService;
 
-	@GetMapping("/account/accountstats/all/total")
+	@GetMapping("/all/total")
 	public double getTotalSalaryForAllDepartments() {
 		return employeeService.getTotalSalaryForAllDepartments();
 	}
 	
-	@GetMapping("/account/accountstats/{deptId}/total")
+	@GetMapping("/{deptId}/total")
 	public double getTotalSalaryForDepartment(@PathVariable Long deptId) {
 		return departmentService.getTotalSalaryForDepartment(deptId);
 	}
 	
-	@GetMapping("/account/accountstats/all/avg")
+	@GetMapping("/all/avg")
 	public double getAverageSalaryForAllDepartments() {
 		return employeeService.getAverageSalaryForAllDepartments();
 	}
 	
-	@GetMapping("/account/accountstats/{deptId}/avg")
+	@GetMapping("/{deptId}/avg")
 	public double getAverageSalaryForDepartment(@PathVariable Long deptId) {
 		return departmentService.getAverageSalaryForDepartment(deptId);
 	}

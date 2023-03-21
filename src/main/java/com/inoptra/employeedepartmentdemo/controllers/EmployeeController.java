@@ -8,27 +8,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/employees")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/employees/{employeeId}")
+    @GetMapping("/{employeeId}")
     public Employee getEmployeeById(@PathVariable Long employeeId){
         return employeeService.getEmployeeById(employeeId);
     }
 
-    @PostMapping("/employees/add")
+    @PostMapping()
     public Employee addEmployee(@RequestBody Employee employee){
         return employeeService.addEmployee(employee);
     }
 
-    @PutMapping("/employees/update")
+    @PutMapping()
     public Employee updateEmployee(@RequestBody Employee employee){
         return employeeService.updateEmployee(employee);
     }
 
-    @DeleteMapping("/employees/{employeeId}")
+    @DeleteMapping("/{employeeId}")
     public ResponseEntity<Long> deleteEmployee(@PathVariable Long employeeId){
         employeeService.deleteEmployee(employeeId);
         return new ResponseEntity<>(employeeId, HttpStatus.OK);
